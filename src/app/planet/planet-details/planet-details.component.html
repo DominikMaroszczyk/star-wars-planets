@@ -1,0 +1,12 @@
+<p *ngIf="planet">planet-details {{ planet.name }} works!</p>
+<button (click)="onGoBack()">Go Back</button>
+
+<div *ngIf="films">
+  <h1>Films</h1>
+  <div *ngFor="let film of films">{{ film.title }}</div>
+</div>
+
+<div *ngIf="residents">
+  <h1>Residents</h1>
+  <div *ngFor="let resident of residents">{{ resident.name }}</div>
+</div>

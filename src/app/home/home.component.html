@@ -1,0 +1,16 @@
+<div *ngIf="planets">
+  <app-planet
+    *ngFor="let planet of planets"
+    [planet]="planet"
+    (click)="planetSelect(planet)"
+  ></app-planet>
+</div>
+<div>
+  <a
+    *ngFor="let number of pages"
+    [routerLink]="['/planets']"
+    [queryParams]="{ page: number }"
+    (click)="getPlanetsByPage(number)"
+    >{{ number }}</a
+  >
+</div>
