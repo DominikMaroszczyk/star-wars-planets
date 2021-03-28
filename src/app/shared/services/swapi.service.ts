@@ -30,7 +30,7 @@ export class SwapiService {
   }
 
   //
-  getPlanetsByPage(page: number = 1): Observable<ApiResponseModel> {
+  getPlanets(page: number = 1): Observable<ApiResponseModel> {
     return this._http.get(`${this._apiBaseUrl}planets/?page=${page}`).pipe(
       map((data: ApiResponseModel) => {
         return data;

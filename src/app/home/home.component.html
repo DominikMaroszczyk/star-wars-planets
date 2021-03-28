@@ -1,5 +1,5 @@
-<div id="main-content">
-  <div *ngIf="planets" class="planets">
+<div id="main-content" *ngIf="planets">
+  <div class="planets">
     <app-planet
       *ngFor="let planet of planets"
       [planet]="planet"
@@ -16,4 +16,8 @@
       >{{ number }}</a
     >
   </nav>
+</div>
+
+<div *ngIf="!planets">
+  <mat-spinner style="margin: 0 auto"></mat-spinner>
 </div>
