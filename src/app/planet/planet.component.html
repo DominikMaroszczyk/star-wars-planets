@@ -1,1 +1,22 @@
-<p>planet {{ planet.name }} works!</p>
+<mat-card class="planet-card">
+  <mat-card-header>
+    <mat-card-header>
+      <div mat-card-avatar style="font-size: 2rem">🌍</div>
+      <mat-card-title color="primary">{{ planet.name }}</mat-card-title>
+      <mat-card-subtitle>🧍 {{ planet.population }}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="content-atribute">
+      <h4 class="atribute-title">Diameter</h4>
+      <span> {{ planet.diameter }} km </span>
+    </div>
+    <div class="content-atribute">
+      <h4 class="atribute-title">Gravity</h4>
+      <span> {{ planet.gravity }} G </span>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">Show More</button>
+  </mat-card-actions>
+</mat-card>

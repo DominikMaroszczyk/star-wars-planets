@@ -13,4 +13,11 @@ export class PlanetModel {
   public created: string;
   public edited: string;
   public url: string;
+
+  //
+  public static compareFn(a: PlanetModel, b: PlanetModel): number {
+    if (a?.name < b?.name) return -1;
+    else if (a?.name > b?.name) return 1;
+    else if (a?.name == b?.name) return 0;
+  }
 }

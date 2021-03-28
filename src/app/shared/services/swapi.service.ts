@@ -23,9 +23,6 @@ export class SwapiService {
   //
   getDataFormEndPoint(endPoint: string): Observable<any> {
     return this._http.get(endPoint).pipe(
-      map((data: any) => {
-        return data;
-      }),
       catchError((error) => {
         return throwError('Something went wrong!');
       })

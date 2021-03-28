@@ -1,16 +1,19 @@
-<div *ngIf="planets">
-  <app-planet
-    *ngFor="let planet of planets"
-    [planet]="planet"
-    (click)="planetSelect(planet)"
-  ></app-planet>
-</div>
-<div>
-  <a
-    *ngFor="let number of pages"
-    [routerLink]="['/planets']"
-    [queryParams]="{ page: number }"
-    (click)="getPlanetsByPage(number)"
-    >{{ number }}</a
-  >
+<div id="main-content">
+  <div *ngIf="planets" class="planets">
+    <app-planet
+      *ngFor="let planet of planets"
+      [planet]="planet"
+      (click)="planetSelect(planet)"
+    ></app-planet>
+  </div>
+
+  <nav class="pages-links">
+    <a
+      mat-mini-fab
+      *ngFor="let number of pages"
+      [color]="number == currentPage ? 'primary' : 'accent'"
+      (click)="onClickLink(number)"
+      >{{ number }}</a
+    >
+  </nav>
 </div>

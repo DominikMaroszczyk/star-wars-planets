@@ -1,0 +1,50 @@
+@import "~@angular/material/theming";
+@import "../../../styles/media";
+
+.planet-detail-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .planet-name {
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    color: map-get($mat-pink, 500);
+  }
+
+  .planet-detail-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+
+    .card-container {
+      width: 100%;
+      max-width: 550px;
+      margin: 10px;
+
+      .planet-detail-card {
+        .planet-detail-list {
+          list-style-type: none;
+          width: 90%;
+          margin: 0 auto;
+
+          .planet-detail-list-item {
+            padding: 10px;
+
+            .list-item-title {
+              text-transform: uppercase;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  button {
+    margin: 20px 0;
+    align-self: center;
+  }
+}

@@ -12,6 +12,7 @@ import { SwapiService } from '../shared/services/swapi.service';
 export class HomeComponent implements OnInit {
   public planets: PlanetModel[];
   public pages: number[];
+  public currentPage: number = 1;
 
   constructor(
     private _swapiService: SwapiService,
@@ -27,8 +28,10 @@ export class HomeComponent implements OnInit {
 
   //
   getPlanetsByPage(page: number = 1) {
+    this.currentPage = page;
+
     this._swapiService.getPlanetsByPage(page).subscribe((res) => {
-      this.planets = res.results;
+      this.planets = res.results.sort(PlanetModel.compareFn);
 
       let numOfPages =
         Math.floor(res.count / 10) + (res.count % 10 > 0 ? 1 : 0);
@@ -44,6 +47,15 @@ export class HomeComponent implements OnInit {
     this._planetService.setCurrentPlanet(planet);
     this._router.navigate(['planet'], {
       queryParams: this._route.snapshot.queryParams,
+    });
+  }
+
+  //
+  onClickLink(number: number) {
+    this.getPlanetsByPage(number);
+    this._router.navigate(['planets'], {
+      queryParams: { page: number },
+      fragment: 'main-content',
     });
   }
 }

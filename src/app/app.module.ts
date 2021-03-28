@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { PlanetComponent } from './planet/planet.component';
 import { PlanetDetailsComponent } from './planet/planet-details/planet-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FilmComponent } from './planet/planet-details/film/film.component';
+import { ResidentComponent } from './planet/planet-details/resident/resident.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     PlanetComponent,
     PlanetDetailsComponent,
+    FilmComponent,
+    ResidentComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,94 @@
-<p *ngIf="planet">planet-details {{ planet.name }} works!</p>
-<button (click)="onGoBack()">Go Back</button>
+<div class="planet-detail-wrapper">
+  <div *ngIf="planet">
+    <div class="mat-display-1 planet-name">{{ planet.name }}</div>
 
-<div *ngIf="films">
-  <h1>Films</h1>
-  <div *ngFor="let film of films">{{ film.title }}</div>
-</div>
+    <div class="planet-detail-container">
+      <div class="card-container">
+        <mat-card class="planet-detail-card">
+          <mat-card-header>
+            <div mat-card-avatar style="font-size: 1.2rem">🌍</div>
+            <mat-card-title>Details</mat-card-title>
+          </mat-card-header>
 
-<div *ngIf="residents">
-  <h1>Residents</h1>
-  <div *ngFor="let resident of residents">{{ resident.name }}</div>
+          <mat-card-content>
+            <ul class="planet-detail-list mat-body">
+              <li class="planet-detail-list-item">
+                <span class="list-item-title">Population:</span>
+                {{ planet.population }}
+              </li>
+              <li class="planet-detail-list-item">
+                <span class="list-item-title">Rotation period:</span>
+                {{ planet.rotation_period }} h
+              </li>
+              <li class="planet-detail-list-item">
+                <span class="list-item-title">Orbital period:</span>
+                {{ planet.orbital_period }} h
+              </li>
+              <li class="planet-detail-list-item">
+                <span class="list-item-title">Diameter:</span>
+                {{ planet.diameter }} km
+              </li>
+              <li class="planet-detail-list-item">
+                <span class="list-item-title">Climate:</span>
+                {{ planet.climate }}
+              </li>
+              <li class="planet-detail-list-item">
+                <span class="list-item-title">Gravity:</span>
+                {{ planet.gravity }} G
+              </li>
+              <li class="planet-detail-list-item">
+                <span class="list-item-title">Terrain:</span>
+                {{ planet.terrain }}
+              </li>
+              <li class="planet-detail-list-item">
+                <span class="list-item-title">Surface water:</span>
+                {{ planet.surface_water }}% of the surface
+              </li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div *ngIf="films" class="card-container">
+        <mat-card class="films-card">
+          <mat-card-header>
+            <div mat-card-avatar style="font-size: 1.2rem">🎞️</div>
+            <mat-card-title>Films</mat-card-title>
+            <mat-card-subtitle>
+              Films that this planet appeared in
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="films-list">
+            <app-film *ngFor="let film of films" [film]="film"></app-film>
+            <div *ngIf="films.length == 0">There are no films</div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div *ngIf="residents" class="card-container">
+        <mat-card class="residents-card">
+          <mat-card-header>
+            <div mat-card-avatar style="font-size: 1.2rem">🧍</div>
+            <mat-card-title>Residents</mat-card-title>
+            <mat-card-subtitle>
+              Peoples that live on this planet
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="residents-list">
+            <app-resident
+              *ngFor="let resident of residents"
+              [resident]="resident"
+            ></app-resident>
+            <div *ngIf="residents.length == 0">There are no residents</div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="mat-display-1" *ngIf="!planet" style="align-self: center">
+    Select planet from list
+  </div>
+
+  <button (click)="onGoBack()" mat-raised-button color="warn">Go Back</button>
 </div>

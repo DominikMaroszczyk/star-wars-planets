@@ -1,0 +1,40 @@
+$desktop-big: 1500px;
+$desktop: 1260px;
+$half-screen: 960px;
+$tablet: 768px;
+$phone: 480px;
+
+@function translate-media-condition($c) {
+  $condMap: (
+    "screen": "only screen",
+    "print": "only print",
+    "retina":
+      "(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 120dpi)",
+    ">desktop-big": "(min-width: #{$desktop-big + 1})",
+    "<desktop-big": "(max-width: #{$desktop-big})",
+    ">desktop": "(min-width: #{$desktop + 1})",
+    "<desktop": "(max-width: #{$desktop})",
+    ">half-screen": "(min-width: #{$half-screen + 1})",
+    "<half-screen": "(max-width: #{$half-screen})",
+    ">tablet": "(min-width: #{$tablet + 1})",
+    "<tablet": "(max-width: #{$tablet})",
+    ">phone": "(min-width: #{$phone + 1})",
+    "<phone": "(max-width: #{$phone})",
+  );
+  @return map-get($condMap, $c);
+}
+
+// The mdia mixin
+@mixin media($args...) {
+  $query: "";
+  @each $arg in $args {
+    $op: "";
+    @if ($query != "") {
+      $op: " and ";
+    }
+    $query: $query + $op + translate-media-condition($arg);
+  }
+  @media #{$query} {
+    @content;
+  }
+}
